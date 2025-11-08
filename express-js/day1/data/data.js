@@ -2,7 +2,7 @@ const data = [
   {
     id: 1,
     name: "Sumit",
-    displayname: "Sumit Tripathi",
+    displayname: "Sumit_Tripathi",
   },
   {
     id: 2,
