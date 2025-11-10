@@ -28,9 +28,11 @@ app.get("/api/v1/users", (req, res) => {
 
 // Route parameters
 app.get("/api/v1/users/:id", (req, res) => {
-    console.log(req.params);
+    const { id } = req.params;
+    const parsedId = parseInt(id);
+    const user=userData.find((user)=>user.id === parsedId)
 
-    res.status(200).send("User Found!")
+    res.status(200).send(user, "User Found!")
 })
 
 app.listen(PORT, (req, res)=> {
