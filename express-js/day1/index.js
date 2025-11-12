@@ -55,7 +55,24 @@ app.post("/api/v1/users", (req, res) => {
 })
 
 
-// 3. PUT
+// 3. PUT Request (Update all the fields)
+
+app.put("/api/v1/users/:id", (req, res) => {
+    const { body, params: { id } } = req;
+    const parsedId = parseInt(id);
+    const userIndex = userData.findIndex((user) => user.id === parsedId);
+
+    if (userIndex === -1) {
+        res.status(404).send('User not found!');
+    }
+    userData[userIndex] = {
+        
+    }
+})
+
+// 4. PATCH Request (Update Specific field)
+
+// 5. DELETE Request (is it for deleting data on server)
 
 
 
