@@ -66,15 +66,49 @@ app.put("/api/v1/users/:id", (req, res) => {
         res.status(404).send('User not found!');
     }
     userData[userIndex] = {
-        
+        id: parsedId,
+        ...body
     }
+    res.status(201).send({message:'User updated', data:userData[userIndex]});
 })
 
 // 4. PATCH Request (Update Specific field)
 
-// 5. DELETE Request (is it for deleting data on server)
+app.patch("/api/v1/users/:id", (req, res) => {
+  const {
+    body,
+    params: { id },
+  } = req;
+  const parsedId = parseInt(id);
+  const userIndex = userData.findIndex((user) => user.id === parsedId);
 
+  if (userIndex === -1) {
+    res.status(404).send("User not found!");
+  }
+  userData[userIndex] = {
+    ...userData[userIndex], ...body
+  };
+  res.status(201).send({ message: "User updated", data: userData[userIndex] });
+});
 
+// 5. DELETE Request (is it for deleting data on server) -> DELETE Request (Delete Specific User)
+
+app.delete("/api/v1/users/:id", (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const parsedId = parseInt(id);
+  const userIndex = userData.findIndex((user) => user.id === parsedId);
+
+  if (userIndex === -1) {
+    return res.status(404).send("User not found!");
+  }
+
+  const deletedUser = userData[userIndex];
+  userData.splice(userIndex, 1); // Remove the user from array
+
+  res.status(200).send({ message: "User deleted", data: deletedUser });
+});
 
 
 
