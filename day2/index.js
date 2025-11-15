@@ -5,25 +5,23 @@ const app = express();
 
 // Global middleware
 function SayHiMiddleware(req, res, next) {
-  console.log("Hi i'm middleware✋")
-  next()
+  console.log("Hi i'm middleware✋");
+  next();
 }
 
-app.use(SayHiMiddleware)
+app.use(SayHiMiddleware);
 
 app.get("/", (req, res) => {
-  res.send('Hello world!')
-})
+  res.send("Hello world!");
+});
 
-app.get('/users', (req, res) => {
-  res.send("I'm user")
-})
+app.get("/users", (req, res) => {
+  res.send("I'm user");
+});
 
 app.listen(8080, () => {
-    console.log("Server is running on port 8080");
-})
-
-
+  console.log("Server is running on port 8080");
+});
 
 // 1. Global middleware
 // 2. Specific route middleware
