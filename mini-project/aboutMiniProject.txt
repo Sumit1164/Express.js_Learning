@@ -1,0 +1,10 @@
+What i use to create 
+1. Middleware 
+2. Routes
+3. Crypto module
+4. fs
+
+What i create 
+{
+    authenication (private, public), logs, 
+}
