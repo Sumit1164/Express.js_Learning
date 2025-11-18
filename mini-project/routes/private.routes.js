@@ -1,4 +1,5 @@
 import express from 'express'
+import authMiddleware from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -6,7 +7,7 @@ const router = express.Router();
 
 router.get('/dashboard', authMiddleware, (req, res) => {
     res.status(200).send({
-        message:"Wellcome to dashboard🏠"
+        message:`Wellcome to dashboard🏠 ${req.user.name}`
     })
 })
 
