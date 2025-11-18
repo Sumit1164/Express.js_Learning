@@ -2,9 +2,9 @@ import express from 'express'
 
 const router = express.Router();
 
-// dashboard   <- (accesstoken)✅
+//! dashboard   <- (accesstoken)✅
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', authMiddleware, (req, res) => {
     res.status(200).send({
         message:"Wellcome to dashboard🏠"
     })
