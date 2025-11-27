@@ -10,8 +10,12 @@ const app = express();
 app.use(cookieParser("Secert"))
 
 app.get("/", (req, res) => {
-    res.cookie("name", "express", {
-        maxAge: 1000 * 60 * 60 * 24, // cookies life take MeliSecond 1000 
+    // res.cookie("name", "express", {
+    //     maxAge: 1000 * 60 * 60 * 24, // cookies life take MeliSecond 1000 
+    // });
+    res.cookie("userId", "skuamsihti5s7h5@009", {
+        maxAge: 1000 * 60 * 60 * 24,
+        signed:true
     });
     res.send("Hello world✋💀");
 });
@@ -24,8 +28,10 @@ app.get("/product", (req, res) => {
 
 
     console.log("Cookies: ", req.cookies);
+    console.log("Signed Cookies", req.signedCookies);
+    
 
-    if (req.cookies.name && req.cookies.name === "express") {
+    if (req.cookies.name && req.cookies.name === "express") {        //? called defencive programming 
         res.status(200).send({
             id: 1,
             name: "S7T-Shirt",
