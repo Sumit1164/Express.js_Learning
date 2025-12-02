@@ -6,7 +6,7 @@ import session from "express-session";
 
 
 import authRoute from "./routes/auth.routes.js"
-
+import taskRoute from "./routes/task.routes.js"
 
 
 const app = express();
@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 
 
 app.use("/auth", authRoute)
+app.use("/task", taskRoute)
 
 
 app.listen(PORT, (req, res) => {
